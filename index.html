@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Question</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Lock screen -->
+        <div id="lock-screen" class="lock-screen" onclick="unlockScreen()">
+            <div class="lock-content">
+                <h2>Tap to unlock</h2>
+            </div>
+        </div>
+
+        <!-- Main content screen -->
+        <div id="valentine-screen" class="valentine-screen hidden">
+            <h1>Hey [Her Name]!</h1>
+            <p class="message">I have something special to ask you...</p>
+            <button id="askButton" onclick="revealQuestion()">Will you be my Valentine?</button>
+            <div id="question" class="hidden">
+                <h2>Will you be my Valentine?</h2>
+                <p class="answer">💖</p>
+                <button id="yesButton" onclick="showLove()">Yes, I will!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
