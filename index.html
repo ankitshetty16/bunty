@@ -1,233 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day Question</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #34d399, #64d9d9, #38b2ac);
-            background-size: 400% 400%;
-            animation: gradientAnimation 12s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #fff;
-            overflow: hidden;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            text-align: center;
-            position: relative;
-            border-radius: 20px;
-            padding: 50px;
-            background-color: rgba(255, 255, 255, 0.1);
-            width: 85%;
-            max-width: 420px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Lock screen */
-        .lock-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            border-radius: 20px;
-            animation: fadeInLockScreen 0.7s ease;
-        }
-
-        @keyframes fadeInLockScreen {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .lock-content h2 {
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            opacity: 0.9;
-            color: #fff;
-            animation: fadeInLockContent 1s ease;
-        }
-
-        @keyframes fadeInLockContent {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Valentine screen */
-        .valentine-screen {
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .valentine-screen h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: #fff;
-            margin-bottom: 20px;
-            animation: fadeInText 1s ease;
-        }
-
-        .message {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            opacity: 0;
-            animation: fadeInMessage 2s ease 1s forwards;
-        }
-
-        @keyframes fadeInText {
-            0% { opacity: 0; transform: translateY(-30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInMessage {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        button {
-            padding: 16px 40px;
-            font-size: 1.3rem;
-            background-color: #f59e0b;
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        button:hover {
-            background-color: #ffb703;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        button:active {
-            transform: translateY(2px);
-        }
-
-        #question {
-            display: none;
-            margin-top: 20px;
-            animation: fadeIn 1s ease;
-        }
-
-        #yesButton {
-            background-color: #34d399;
-            width: 100%;
-        }
-
-        .answer {
-            font-size: 2.8rem;
-            margin-top: 10px;
-            color: #f59e0b;
-            animation: bounce 1s ease infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Sad animation for "No" */
-        .sad-response {
-            font-size: 2.8rem;
-            margin-top: 10px;
-            color: #e53e3e;
-            animation: bounceSad 1s ease infinite;
-        }
-
-        @keyframes bounceSad {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-15px);
-            }
-            60% {
-                transform: translateY(-7px);
-            }
-        }
-
-        .sad-face {
-            font-size: 4rem;
-        }
-
-        .try-again-button {
-            background-color: #e53e3e;
-            width: 100%;
-            animation: bounce 1s ease infinite;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bunty, Will You Be My Valentine?</title>
+  <!-- Google Font for a modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      text-align: center;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      width: 90%;
+      max-width: 400px;
+    }
+    input[type="password"] {
+      padding: 0.5rem;
+      width: 80%;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #ff6f61;
+      color: #fff;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #ff8a75;
+    }
+    .error {
+      color: #ffdddd;
+      margin-top: 1rem;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    /* Runner animation container */
+    #runner-container {
+      position: relative;
+      height: 100px;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    .runner {
+      position: absolute;
+      left: -100px;
+      font-size: 2rem;
+      animation: run 3s linear forwards;
+    }
+    @keyframes run {
+      0% { left: -100px; }
+      100% { left: 110%; }
+    }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+      button {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+      }
+      input[type="password"] {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Lock screen -->
-        <div id="lock-screen" class="lock-screen" onclick="unlockScreen()">
-            <div class="lock-content">
-                <h2>Tap to Unlock</h2>
-            </div>
-        </div>
+  <!-- PIN Lock Section -->
+  <div id="pin-lock" class="container">
+    <h2>Enter PIN to proceed</h2>
+    <input type="password" id="pin-input" placeholder="Enter PIN" />
+    <br />
+    <button id="pin-submit">Submit</button>
+    <div id="pin-error" class="error"></div>
+  </div>
 
-        <!-- Valentine screen -->
-        <div id="valentine-screen" class="valentine-screen">
-            <h1>Hey [Her Name]!</h1>
-            <p class="message">I have something special to ask you...</p>
-            <button id="askButton" onclick="revealQuestion()">Will you be my Valentine?</button>
-            <div id="question" class="hidden">
-                <h2>Will you be my Valentine?</h2>
-                <p class="answer">💖</p>
-                <button id="yesButton" onclick="showLove()">Yes, I will!</button>
-                <button id="noButton" onclick="showSadResponse()">No...</button>
-            </div>
-            <div id="sadResponse" class="hidden">
-                <p class="sad-face">😔</p>
-                <p class="sad-response">No? I guess I'm heartbroken... 💔</p>
-                <button class="try-again-button" onclick="resetScreen()">Try Again?</button>
-            </div>
-        </div>
+  <!-- Main Valentine Content -->
+  <div id="main-content" class="container" style="display: none;">
+    <h1>Bunty, will you be my Valentine?</h1>
+    <div class="buttons">
+      <button id="yes-button">Yes</button>
+      <button id="no-button">No</button>
     </div>
+    <div id="response-message" style="margin-top: 1rem;"></div>
+    <div id="runner-container"></div>
+  </div>
 
-    <script src="app.js"></script>
+  <script>
+    // PIN lock functionality
+    document.getElementById('pin-submit').addEventListener('click', function() {
+      const correctPin = '2468'; // Change this PIN as needed
+      const inputPin = document.getElementById('pin-input').value;
+      const errorDiv = document.getElementById('pin-error');
+      if (inputPin === correctPin) {
+        document.getElementById('pin-lock').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      } else {
+        errorDiv.textContent = 'Incorrect PIN. Please try again.';
+      }
+    });
+
+    // "Yes" button: Show runner animation with flowers
+    document.getElementById('yes-button').addEventListener('click', function() {
+      const responseDiv = document.getElementById('response-message');
+      responseDiv.textContent = 'Yay! Get ready...';
+      // Create and add the runner element
+      const runnerContainer = document.getElementById('runner-container');
+      runnerContainer.innerHTML = '<div class="runner">🏃‍♂️💐</div>';
+    });
+
+    // "No" button: Give a funny response
+    document.getElementById('no-button').addEventListener('click', function() {
+      const responseDiv = document.getElementById('response-message');
+      responseDiv.innerHTML = "Oh no! I guess I'll have to eat all the chocolates by myself... 😢<br>Just kidding – you're still amazing!";
+    });
+  </script>
 </body>
 </html>
