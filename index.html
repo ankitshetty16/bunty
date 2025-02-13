@@ -92,7 +92,7 @@
     <div id="proposal-card" class="card hidden">
         <h4>Bunty, will you be my Valentine? <span class="heart">❤️</span></h4>
         <button class="btn waves-effect waves-light pink darken-1" onclick="sayYes()">Yes 💖</button>
-        <button class="btn waves-effect waves-light grey darken-1" onclick="sayNo()">No 😂</button>
+        <button class="btn waves-effect waves-light grey darken-1" onclick="sayNo()">No 😞</button>
     </div>
     <div id="response" class="hidden"></div>
 
@@ -113,13 +113,13 @@
         function sayYes() {
             $("#proposal-card").fadeOut(500, function() {
                 setTimeout(function() {
-                    $("#response").html("<div class='celebration'>🎉Are you French? Because Eiffel for you! 📦💌</div>").fadeIn(500);
+                    $("#response").html("<div class='celebration'>💋 Are you French? Because Eiffel for you! 💋</div> <div>Pro Tip: Look around and you might be surprised today! 😉</div>").fadeIn(500);
                 }, 1500); // Delay to allow animation to complete
             });
         }
 
         function sayNo() {
-            $('#toaster').html('😱 Rejected? Time to adopt a cat and name it Heartbreak. 😆')
+            $('#toaster').html('😱 Rejected? Time to adopt a cat and name it Heartbreak. 😿 Try Again!!!')
                         .fadeIn(500).delay(2000).fadeOut(500); // Show toaster with a "No" message
         }
     </script>
