@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Day Question</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,10 +13,10 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff7b92, #ff9baf, #ffacc6);
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #34d399, #64d9d9, #38b2ac);
             background-size: 400% 400%;
-            animation: gradientAnimation 10s ease infinite;
+            animation: gradientAnimation 12s ease infinite;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,12 +34,13 @@
         .container {
             text-align: center;
             position: relative;
-            border-radius: 15px;
-            padding: 40px 30px;
+            border-radius: 20px;
+            padding: 50px;
             background-color: rgba(255, 255, 255, 0.1);
             width: 85%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 420px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         /* Lock screen */
@@ -49,22 +50,33 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10;
-            border-radius: 15px;
-            transition: opacity 0.5s ease;
+            border-radius: 20px;
+            animation: fadeInLockScreen 0.7s ease;
+        }
+
+        @keyframes fadeInLockScreen {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .lock-content h2 {
             font-size: 2rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             font-weight: 600;
             opacity: 0.9;
             color: #fff;
+            animation: fadeInLockContent 1s ease;
+        }
+
+        @keyframes fadeInLockContent {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         /* Valentine screen */
@@ -75,33 +87,48 @@
 
         .valentine-screen h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: fadeInText 1s ease;
         }
 
         .message {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             font-weight: 400;
             letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInMessage 2s ease 1s forwards;
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInMessage {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         button {
-            padding: 14px 35px;
-            font-size: 1.2rem;
-            background-color: #ff5c8d;
-            color: white;
+            padding: 16px 40px;
+            font-size: 1.3rem;
+            background-color: #f59e0b;
+            color: #fff;
             border: none;
-            border-radius: 30px;
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
 
         button:hover {
-            background-color: #ff7b92;
+            background-color: #ffb703;
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         button:active {
@@ -115,23 +142,61 @@
         }
 
         #yesButton {
-            background-color: #66c466;
+            background-color: #34d399;
             width: 100%;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .answer {
+            font-size: 2.8rem;
+            margin-top: 10px;
+            color: #f59e0b;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         .hidden {
             display: none;
         }
 
-        .answer {
-            font-size: 2.5rem;
+        /* Sad animation for "No" */
+        .sad-response {
+            font-size: 2.8rem;
             margin-top: 10px;
-            color: #ff6f61;
+            color: #e53e3e;
+            animation: bounceSad 1s ease infinite;
+        }
+
+        @keyframes bounceSad {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-7px);
+            }
+        }
+
+        .sad-face {
+            font-size: 4rem;
+        }
+
+        .try-again-button {
+            background-color: #e53e3e;
+            width: 100%;
+            animation: bounce 1s ease infinite;
         }
     </style>
 </head>
@@ -146,13 +211,19 @@
 
         <!-- Valentine screen -->
         <div id="valentine-screen" class="valentine-screen">
-            <h1>Hey Bunty!</h1>
+            <h1>Hey [Her Name]!</h1>
             <p class="message">I have something special to ask you...</p>
             <button id="askButton" onclick="revealQuestion()">Will you be my Valentine?</button>
             <div id="question" class="hidden">
                 <h2>Will you be my Valentine?</h2>
                 <p class="answer">💖</p>
                 <button id="yesButton" onclick="showLove()">Yes, I will!</button>
+                <button id="noButton" onclick="showSadResponse()">No...</button>
+            </div>
+            <div id="sadResponse" class="hidden">
+                <p class="sad-face">😔</p>
+                <p class="sad-response">No? I guess I'm heartbroken... 💔</p>
+                <button class="try-again-button" onclick="resetScreen()">Try Again?</button>
             </div>
         </div>
     </div>
