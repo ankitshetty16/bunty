@@ -13,39 +13,56 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            font-family: 'Roboto', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?love,romance') center/cover;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
         }
         .card {
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
         }
         .hidden { display: none; }
-        .btn { margin: 10px; }
+        .btn { margin: 10px; font-weight: bold; }
         .running-man {
             font-size: 24px;
             margin-top: 20px;
-            animation: bounce 1s infinite;
+            animation: run 2s infinite linear;
+            position: relative;
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes run {
+            0% { left: -50px; }
+            100% { left: 100px; }
+        }
+        .heart {
+            color: red;
+            font-size: 30px;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
     </style>
 </head>
 <body>
-    <div id="pin-card" class="card white">
+    <div id="pin-card" class="card">
         <h5>Enter the Secret Pin</h5>
         <div class="input-field">
-            <input type="password" id="pin-input">
+            <input type="password" id="pin-input" class="validate">
         </div>
-        <button class="btn waves-effect waves-light pink darken-2" onclick="unlock()">Unlock</button>
+        <button class="btn waves-effect waves-light red darken-2" onclick="unlock()">Unlock 🔓</button>
     </div>
-    <div id="proposal-card" class="card white hidden">
-        <h4>Bunty, will you be my Valentine?</h4>
-        <button class="btn waves-effect waves-light pink lighten-1" onclick="sayYes()">Yes ❤️</button>
+    <div id="proposal-card" class="card hidden">
+        <h4>Bunty, will you be my Valentine? <span class="heart">❤️</span></h4>
+        <img src="https://source.unsplash.com/300x200/?couple,happy" alt="Couple" class="responsive-img">
+        <button class="btn waves-effect waves-light pink lighten-1" onclick="sayYes()">Yes 💖</button>
         <button class="btn waves-effect waves-light grey darken-1" onclick="sayNo()">No 😂</button>
     </div>
     <div id="response" class="hidden"></div>
@@ -59,7 +76,7 @@
         }
         function sayYes() {
             $("#proposal-card").fadeOut(500, function() {
-                $("#response").html("<div class='running-man'>🏃‍♂️ Running to you with flowers! 🌸</div>").fadeIn(500);
+                $("#response").html("<div class='running-man'>🏃‍♂️ Running to you with flowers! 🌹</div>").fadeIn(500);
             });
         }
         function sayNo() {
