@@ -113,14 +113,9 @@
         function sayYes() {
             $("#proposal-card").fadeOut(500, function() {
                 setTimeout(function() {
-                    $("#response").html("<div class='celebration'>🎉 Woohoo! Brace yourself for a surprise package! 📦💌</div>").fadeIn(500);
+                    $("#response").html("<div class='celebration'>🎉Are you French? Because Eiffel for you! 📦💌</div>").fadeIn(500);
                 }, 1500); // Delay to allow animation to complete
             });
-
-            // Show the toaster notification after a slight delay
-            setTimeout(function() {
-                $('#toaster').fadeIn(500).delay(2000).fadeOut(500);
-            }, 3000); // Delay to sync with the animation
         }
 
         function sayNo() {
