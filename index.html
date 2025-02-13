@@ -14,7 +14,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background: url('186.jpg') no-repeat center center/cover;
+            background: url('dji_fly_20241217_044811_0320_1739374442770_photo.JPG') no-repeat center center/cover;
             font-family: 'Montserrat', sans-serif;
             text-align: center;
             padding: 20px;
@@ -71,7 +71,7 @@
 </head>
 <body>
     <div id="pin-card" class="card">
-        <h5>Enter the Secret Pin</h5>
+        <h5>Enter the Secret Pin (What do you call me?)</h5>
         <div class="input-field">
             <input type="password" id="pin-input" class="validate">
         </div>
@@ -85,7 +85,7 @@
     <div id="response" class="hidden"></div>
     <script>
         function unlock() {
-            if (document.getElementById("pin-input").value === "0214") {
+            if (document.getElementById("pin-input").value === "bubli") {
                 $("#pin-card").fadeOut(500, function() {
                     $("#proposal-card").fadeIn(500);
                 });
