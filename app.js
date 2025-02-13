@@ -2,13 +2,18 @@ function unlockScreen() {
     const lockScreen = document.getElementById("lock-screen");
     const valentineScreen = document.getElementById("valentine-screen");
 
-    lockScreen.style.display = "none"; // Hide the lock screen
-    valentineScreen.style.display = "block"; // Show the main content
+    // Unlock screen and reveal content with smooth transition
+    lockScreen.style.opacity = "0";
+    setTimeout(() => {
+        lockScreen.style.display = "none";  // Completely hide the lock screen after fade out
+        valentineScreen.style.opacity = "1";  // Fade in the valentine message screen
+    }, 500); // Wait for the fade-out transition before changing display
 }
 
 function revealQuestion() {
     const button = document.getElementById("askButton");
     const question = document.getElementById("question");
+
     button.style.display = "none"; // Hide the "Will you be my Valentine?" button
     question.style.display = "block"; // Show the actual Valentine’s question
 }
