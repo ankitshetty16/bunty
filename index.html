@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine Proposal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         body {
             display: flex;
@@ -11,52 +13,59 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background-color: #ffe6e6;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: 'Roboto', sans-serif;
             text-align: center;
         }
         .card {
-            background: white;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
         .hidden { display: none; }
-        .btn { padding: 10px 20px; margin: 5px; border: none; cursor: pointer; }
-        .yes-btn { background-color: pink; color: white; }
-        .no-btn { background-color: gray; color: black; }
-        .running-man { font-size: 24px; margin-top: 20px; animation: bounce 1s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .btn { margin: 10px; }
+        .running-man {
+            font-size: 24px;
+            margin-top: 20px;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body>
-    <div id="pin-card" class="card">
-        <h2>Enter the Secret Pin</h2>
-        <input type="password" id="pin-input">
-        <button class="btn" onclick="unlock()">Unlock</button>
+    <div id="pin-card" class="card white">
+        <h5>Enter the Secret Pin</h5>
+        <div class="input-field">
+            <input type="password" id="pin-input">
+        </div>
+        <button class="btn waves-effect waves-light pink darken-2" onclick="unlock()">Unlock</button>
     </div>
-    <div id="proposal-card" class="card hidden">
-        <h1>Bunty, will you be my Valentine?</h1>
-        <button class="btn yes-btn" onclick="sayYes()">Yes ❤️</button>
-        <button class="btn no-btn" onclick="sayNo()">No 😂</button>
+    <div id="proposal-card" class="card white hidden">
+        <h4>Bunty, will you be my Valentine?</h4>
+        <button class="btn waves-effect waves-light pink lighten-1" onclick="sayYes()">Yes ❤️</button>
+        <button class="btn waves-effect waves-light grey darken-1" onclick="sayNo()">No 😂</button>
     </div>
     <div id="response" class="hidden"></div>
-
     <script>
         function unlock() {
             if (document.getElementById("pin-input").value === "0214") {
-                document.getElementById("pin-card").classList.add("hidden");
-                document.getElementById("proposal-card").classList.remove("hidden");
+                $("#pin-card").fadeOut(500, function() {
+                    $("#proposal-card").fadeIn(500);
+                });
             }
         }
         function sayYes() {
-            document.getElementById("proposal-card").classList.add("hidden");
-            document.getElementById("response").innerHTML = "<div class='running-man'>🏃‍♂️ Running to you with flowers! 🌸</div>";
-            document.getElementById("response").classList.remove("hidden");
+            $("#proposal-card").fadeOut(500, function() {
+                $("#response").html("<div class='running-man'>🏃‍♂️ Running to you with flowers! 🌸</div>").fadeIn(500);
+            });
         }
         function sayNo() {
-            alert("Wrong choice, Bunty! Try again! 😆");
+            M.toast({html: "Wrong choice, Bunty! Try again! 😆", classes: 'rounded'});
         }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
